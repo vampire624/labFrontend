@@ -36,10 +36,27 @@ export default {
       tableData: []
     }
   },
+  methods : {
+    collateData (data) {
+      const tempDataObj = {}
+      const tempDataArr = []
+      data.forEach((item) => {
+        if (!tempDataObj[item.year]) {
+          tempDataObj[item.year] = [item]
+        } else {
+          tempDataObj[item.year].push(item)
+        }
+      })
+      for (let key in tempDataObj) {
+        tempDataArr.push(tempDataObj[key])
+      }
+      return tempDataArr
+    }
+  },
   mounted () {
     this.axios.get(URL.workedStuff)
     .then(res => {
-      this.tableData = res.data
+      this.tableData = this.collateData(res.data)
     })
     .catch(err => {
       console.log(err)
