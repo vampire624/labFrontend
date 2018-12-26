@@ -49,7 +49,7 @@ export default {
   display: block;
   text-decoration: none;
   font-size: 28px;
-  padding-top: 20px;
+  padding-top: 15px;
   color: #409EFF;
 }
 

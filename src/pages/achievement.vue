@@ -2,7 +2,7 @@
   <div>
     <Banner></Banner>
     <Title :title="title"></Title>
-    <el-card class="box-card" shadow="hover">
+    <el-card class="box-card" shadow="hover" v-loading="essayLoading">
       <div slot="header">
         <span class="title">论文</span>
       </div>
@@ -11,7 +11,7 @@
          {{ item.title }}
       </div>
     </el-card>
-    <el-card class="box-card" shadow="hover">
+    <el-card class="box-card" shadow="hover" v-loading="rightLoading">
       <div slot="header">
         <span class="title">专利</span>
       </div>
@@ -36,6 +36,8 @@ export default {
     return {
       title: '研究成果',
       colors: ['primary', 'success', 'warning', 'danger'],
+      essayLoading: true,
+      rightLoading: true,
       essays: [],
       rights: []
     }
@@ -44,17 +46,29 @@ export default {
     this.axios.get(URL.essays)
     .then((res) => {
       this.essays = res.data
+      this.essayLoading = false
     })
     .catch((err) => {
       console.log(err)
+      this.essayLoading = false
+      this.$notify.error({
+        title: '错误',
+        message: '服务器繁忙，刷新页面后请重试！',
+      })
     })
 
     this.axios.get(URL.rights)
     .then(res => {
       this.rights = res.data
+      this.rightLoading = false
     })
     .catch(err => {
       console.log(err)
+      this.rightLoading = false
+      this.$notify.error({
+        title: '错误',
+        message: '服务器繁忙，刷新页面后请重试！',
+      })
     })
   }
 }
