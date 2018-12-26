@@ -57,7 +57,6 @@ export default {
     this.axios.get(URL.workingStuff)
     .then(res => {
       this.tableData = this.collateData(res.data)
-      console.log(this.tableData)
     })
     .catch(err => {
       console.log(err)

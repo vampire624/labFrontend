@@ -7,6 +7,7 @@ import Project from '../pages/project.vue'
 import Introduction from '../pages/introduct.vue'
 import Staff from '../pages/staff.vue'
 import RelatedLink from '../pages/relatedLink.vue'
+import NotFound from '../pages/notFound.vue'
 
 import StaffTutor from '../pages/staffTutor.vue'
 import StaffWorking from '../pages/staffWorking.vue'
@@ -56,9 +57,9 @@ let router = new Router({
       path: '/introduct',
       component: Introduction
     }, {
-      name: 'other',
+      name: 'notFound',
       path: '*',
-      redirect: '/'
+      component: NotFound
     }
 
   ]

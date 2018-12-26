@@ -4,6 +4,7 @@
       <el-col :span="10">
         <div>
           <router-link :to="{path: '/'}" class="head-title">光通信技术实验室</router-link>
+          <span class="head-title-en">Lab of Optic Communication Technology</span>
         </div>
       </el-col>
       <el-col :span="14">
@@ -31,6 +32,14 @@ export default {
     return {
       activeIndex: '/'
     }
+  },
+  watch: {
+    $route (to, from) {
+      this.activeIndex = to.path // 用户使用返回时，路由变化，导航栏选中状态跟随变化
+    }
+  },
+  mounted () {
+    this.activeIndex = this.$route.path
   }
 }
 </script>
@@ -39,9 +48,15 @@ export default {
 .head-title {
   display: block;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 28px;
   padding-top: 20px;
   color: #409EFF;
+}
+
+.head-title-en {
+  font-size: 12px;
+  color: darkgray;
+  font-weight: bold;
 }
 </style>
 
