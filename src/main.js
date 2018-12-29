@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import ElementUI from 'element-ui'
+import {Row, Col, Button, Carousel, CarouselItem, Table, TableColumn, Menu, MenuItem, Submenu, Card, Loading, Notification} from 'element-ui'
 import axios from 'axios'
 import Nprogress from 'nprogress'
 
@@ -19,7 +19,22 @@ router.afterEach((to) => {
   Nprogress.done()
 })
 
-Vue.use(ElementUI)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Button)
+Vue.use(Carousel)
+Vue.use(CarouselItem)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Menu)
+Vue.use(MenuItem)
+Vue.use(Submenu)
+Vue.use(Card)
+
+Vue.use(Loading.directive)
+
+Vue.prototype.$loading = Loading.service
+Vue.prototype.$notify = Notification
 Vue.prototype.axios = axios
 
 new Vue({
